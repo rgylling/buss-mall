@@ -1,4 +1,15 @@
+header {
 
+font-family: cursive;
+text-align: center;
+font-size: 90px;
+background-color: white;
+font-weight: normal;
+margin:10px auto 0px auto;
+-webkit-box-shadow: 10px 29px 39px -12px rgba(0,0,0,0.72);
+-moz-box-shadow: 10px 29px 39px -12px rgba(0,0,0,0.72);
+box-shadow: 10px 29px 39px -12px rgba(0,0,0,0.72);
+}
 
 
 
