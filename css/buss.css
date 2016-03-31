@@ -129,7 +129,13 @@ h2 {
 
 }
 
+#copy {
 
+  font-family: cursive;
+
+  color: white;
+
+}
 
 
 
@@ -139,4 +145,8 @@ h2 {
 footer {
   margin:10px auto 10px auto;
   text-align: center;
+  background-image: url("../img/sky.jpg");
+  background-position: bottom;
+  opacity: .9;
+  border-radius: 50px;
 }
