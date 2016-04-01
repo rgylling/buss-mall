@@ -8,9 +8,6 @@ variables
 specific images set to variables and collect the id from DOM
 */
 
-
-
-
 var imageOne = document.getElementById('myImageOne');
 var imageTwo = document.getElementById('myImageTwo');
 var imageThree = document.getElementById('myImageThree');
@@ -30,8 +27,6 @@ var needNumber = 0;
 var processClick = true;
 var processClickOne = true;
 
-
-
 /*
 ===============
 arrays
@@ -40,17 +35,6 @@ arrays
 
 /* +
 make a new object here per image added
-*/
-
-/*
-
-var setLocal = localStorage.setItem("myObject", JSON.stringify(myArray));
-if (setLocal === undefined) {
-  localStorage.setItem('myObject', JSON.stringify(myArray));
-}; if (setLocal) {}
-var getStorage = localStorage.getItem ('myObject');
-var parseMe = JSON.parse(getStorage);
-
 */
 
 function setLocal (key, yourArray){
@@ -89,8 +73,6 @@ myArray[5] = new makeImageObj("oil", "img/oil.jpg");
 myArray[6] = new makeImageObj("vans", "img/vans.jpeg");
 }
 
-
-
 /*
 ================
 calling functions
@@ -101,7 +83,6 @@ calling functions
 calling the showRandomImg function with specific images here.
 */
 showRandomImg(imageOne);
-
 showRandomImg(imageTwo);
 showRandomImg(imageThree);
 
@@ -162,16 +143,12 @@ function imageClicked() {
     //for each addition image add in code to call the image here:
 
     var firstImg =  showRandomImg(imageOne);
-    //setLocal ('img1', firstImg);
     setLocal('imageOne_n', imageOne.n);
 
     var secondImg = showRandomImg(imageTwo);
-  //   setLocal ('img2', secondImg);
      setLocal('imageTwo_n', imageTwo.n);
 
-
     var thirdImg = showRandomImg(imageThree);
-    // setLocal ('img3', thirdImg);
      setLocal('imageThree_n', imageThree.n);
 
 
@@ -215,7 +192,6 @@ function percentageOne (a,b) {
   return finalNumb;
 }
 
-
 /*
 random number generation to go through amount of images within
 constructors
@@ -245,8 +221,6 @@ displayButton.setAttribute('style','visibility:hidden');
 voteMoreButton.setAttribute('style','visibility:hidden');
 
 var buyers = document.getElementById('buyers').getContext('2d');
-
-
 
 var buyerData = {
 	labels : ["Beanie","Beer Bong","Boot Glass","Comb","Keg","Oil","Vans"],
@@ -297,13 +271,13 @@ reset.addEventListener("click", resetThePage);
 voteMoreButton.addEventListener("click", imageClicked);
 displayButton.addEventListener("click", showResults);
 
+//resets page and clears local storage
 function resetThePage () {
   localStorage.clear();
   location.reload();
   window.scrollTo(0, 0);
 }
-
-
+// Saves my images on reset
 var localOne = getLocal ('imageOne_n');
 imageOne.setAttribute("src", myArray[localOne].path);
 var localTwo = getLocal ('imageTwo_n');
