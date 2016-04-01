@@ -34,9 +34,42 @@ arrays
 ===============
 */
 
-/* +++++++
+/* +
 make a new object here per image added
 */
+
+/*
+
+var setLocal = localStorage.setItem("myObject", JSON.stringify(myArray));
+if (setLocal === undefined) {
+  localStorage.setItem('myObject', JSON.stringify(myArray));
+}; if (setLocal) {}
+var getStorage = localStorage.getItem ('myObject');
+var parseMe = JSON.parse(getStorage);
+
+*/
+
+function setLocal (key, yourArray){
+  var setMe = JSON.stringify(yourArray);
+  localStorage[key] = setMe
+}
+
+function getLocal (key){
+  var setThis = localStorage[key];
+  return JSON.parse(setThis)
+}
+
+
+if (localStorage['localArr']) {
+ console.log('YESSSSSS');
+myArray =  getLocal ('localArr')
+} else {
+  makeNewObjects();
+  setLocal('localArr',myArray);
+  console.log('no local objects found rendering new image objects');
+}
+
+function makeNewObjects (){
 myArray[0] = new makeImageObj("beanie", "img/beanie.jpeg");
 myArray[1] = new makeImageObj("beer", "img/beer.jpeg");
 myArray[2] = new makeImageObj("boot", "img/boot.jpeg");
@@ -44,6 +77,9 @@ myArray[3] = new makeImageObj("comb", "img/comb.jpg");
 myArray[4] = new makeImageObj("keg", "img/keg.jpg");
 myArray[5] = new makeImageObj("oil", "img/oil.jpg");
 myArray[6] = new makeImageObj("vans", "img/vans.jpeg");
+}
+
+
 
 /*
 ================
@@ -179,6 +215,15 @@ voteMoreButton.setAttribute('style','visibility:hidden');
 
 var buyers = document.getElementById('buyers').getContext('2d');
 
+/*
+var setLocal = localStorage.setItem("myObject", JSON.stringify(myArray));
+if (setLocal === undefined) {
+  localStorage.setItem('myObject', JSON.stringify(myArray));
+}; if (setLocal) {}
+var getStorage = localStorage.getItem ('myObject');
+var parseMe = JSON.parse(getStorage);
+
+*/
 
 var buyerData = {
 	labels : ["Beanie","Beer Bong","Boot Glass","Comb","Keg","Oil","Vans"],
@@ -206,16 +251,12 @@ var buyerDataOne = {
 			pointStrokeColor : "#9DB86D",
 			data : [myArray[0].percentage(),myArray[1].percentage(),myArray[2].percentage(),myArray[3].percentage(),myArray[4].percentage(),myArray[5].percentage(),myArray[6].percentage()]
 		}
-
 	]
 };
 
 new Chart(buyersOne).Bar(buyerDataOne);
 
-
 }
-
-
 
 /*
 ===============

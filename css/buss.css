@@ -49,9 +49,7 @@ h2 {
   z-index: 1;
   height: 100%;
   visibility: hidden;
-  background-image: url("../img/sky.jpg");
-  background-position: bottom;
-  opacity: .2;
+  background-color: transparent;
 }
 
 #blockone {
