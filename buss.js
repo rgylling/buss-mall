@@ -7,6 +7,10 @@ variables
 /*
 specific images set to variables and collect the id from DOM
 */
+
+
+
+
 var imageOne = document.getElementById('myImageOne');
 var imageTwo = document.getElementById('myImageTwo');
 var imageThree = document.getElementById('myImageThree');
@@ -113,6 +117,7 @@ imageOne.onclick = function() {
       console.log(myArray[i].path + " " +myArray[i].nClicks);
     }
   }
+  setLocal('localArr',myArray);
 }
 
 //function to count the number of clicks on imageTwo specifically
@@ -125,6 +130,7 @@ imageTwo.onclick = function() {
       console.log(myArray[i].path + " " +myArray[i].nClicks);
     }
   }
+  setLocal('localArr',myArray);
 }
 
 //function to count the number of clicks on imageThree specifically
@@ -137,6 +143,7 @@ imageThree.onclick = function() {
       console.log(myArray[i].path + " " +myArray[i].nClicks);
     }
   }
+  setLocal('localArr',myArray);
 }
 
 
@@ -182,11 +189,15 @@ function makeImageObj(name, path) {
   this.path = path;
   this.nShow = 0;
   this.nClicks = 0;
-  this.percentage = function () {
-    return Math.round((this.nClicks / this.nShow) * 100);
+
   };
 
+
+function percentageOne (a,b) {
+  var finalNumb = Math.round((a / b) * 100);
+  return finalNumb;
 }
+
 
 /*
 random number generation to go through amount of images within
@@ -249,7 +260,7 @@ var buyerDataOne = {
 			strokeColor : "#617E94",
 			pointColor : "#fff",
 			pointStrokeColor : "#9DB86D",
-			data : [myArray[0].percentage(),myArray[1].percentage(),myArray[2].percentage(),myArray[3].percentage(),myArray[4].percentage(),myArray[5].percentage(),myArray[6].percentage()]
+			data : [percentageOne(myArray[0].nClicks,myArray[0].nShow),percentageOne(myArray[1].nClicks,myArray[1].nShow),percentageOne(myArray[2].nClicks,myArray[2].nShow),percentageOne(myArray[3].nClicks,myArray[3].nShow),percentageOne(myArray[4].nClicks,myArray[4].nShow),percentageOne(myArray[5].nClicks,myArray[5].nShow),percentageOne(myArray[6].nClicks,myArray[6].nShow)]
 		}
 	]
 };
