@@ -65,13 +65,25 @@ function getLocal (key){
 
 
 if (localStorage['localArr']) {
- console.log('YESSSSSS');
 myArray =  getLocal ('localArr')
 } else {
   makeNewObjects();
   setLocal('localArr',myArray);
   console.log('no local objects found rendering new image objects');
 }
+
+
+/*
+if (localStorage['img1']) {
+imageOne =  getLocal ('img1');
+}
+if (localStorage['img2']) {
+imageOne =  getLocal ('img2');
+}
+if (localStorage['img3']) {
+imageOne =  getLocal ('img3');
+}
+*/
 
 function makeNewObjects (){
 myArray[0] = new makeImageObj("beanie", "img/beanie.jpeg");
@@ -92,10 +104,10 @@ calling functions
 */
 
 /*
-calling the showRandomImg function with specific images here. Will need
-to ammend additional images
+calling the showRandomImg function with specific images here.
 */
 showRandomImg(imageOne);
+
 showRandomImg(imageTwo);
 showRandomImg(imageThree);
 
@@ -154,9 +166,18 @@ function imageClicked() {
     needNumber ++;
 
     //for each addition image add in code to call the image here:
-    showRandomImg(imageOne);
-    showRandomImg(imageTwo);
-    showRandomImg(imageThree);
+
+    var firstImg =  showRandomImg(imageOne);
+     setLocal ('img1', firstImg);
+
+
+    var secondImg = showRandomImg(imageTwo);
+     setLocal ('img2', secondImg);
+
+
+    var thirdImg = showRandomImg(imageThree);
+     setLocal ('img3', thirdImg);
+
 
 
     if (totalClicks == 16) {
@@ -215,6 +236,8 @@ function showRandomImg(image) {
   var n = randomImageIndex();
   image.setAttribute("src", myArray[n].path);
   myArray[n].nShow++;
+  console.log (n);
+  return myArray[n].path;
 }
 
 //function to show results
@@ -226,15 +249,7 @@ voteMoreButton.setAttribute('style','visibility:hidden');
 
 var buyers = document.getElementById('buyers').getContext('2d');
 
-/*
-var setLocal = localStorage.setItem("myObject", JSON.stringify(myArray));
-if (setLocal === undefined) {
-  localStorage.setItem('myObject', JSON.stringify(myArray));
-}; if (setLocal) {}
-var getStorage = localStorage.getItem ('myObject');
-var parseMe = JSON.parse(getStorage);
 
-*/
 
 var buyerData = {
 	labels : ["Beanie","Beer Bong","Boot Glass","Comb","Keg","Oil","Vans"],
@@ -286,6 +301,7 @@ voteMoreButton.addEventListener("click", imageClicked);
 displayButton.addEventListener("click", showResults);
 
 function resetThePage () {
+  localStorage.clear();
   location.reload();
   window.scrollTo(0, 0);
 }
