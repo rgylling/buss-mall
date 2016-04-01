@@ -72,17 +72,11 @@ myArray =  getLocal ('localArr')
   console.log('no local objects found rendering new image objects');
 }
 
-
 /*
-if (localStorage['img1']) {
-imageOne =  getLocal ('img1');
-}
-if (localStorage['img2']) {
-imageOne =  getLocal ('img2');
-}
-if (localStorage['img3']) {
-imageOne =  getLocal ('img3');
-}
+var indexOne = getLocal ('imageOne_n');
+console.log (indexOne + "This should give me an index number")
+console.log(myArray[indexOne]+"isuhfsidfhifhsu");
+
 */
 
 function makeNewObjects (){
@@ -168,15 +162,17 @@ function imageClicked() {
     //for each addition image add in code to call the image here:
 
     var firstImg =  showRandomImg(imageOne);
-     setLocal ('img1', firstImg);
-
+    //setLocal ('img1', firstImg);
+    setLocal('imageOne_n', imageOne.n);
 
     var secondImg = showRandomImg(imageTwo);
-     setLocal ('img2', secondImg);
+  //   setLocal ('img2', secondImg);
+     setLocal('imageTwo_n', imageTwo.n);
 
 
     var thirdImg = showRandomImg(imageThree);
-     setLocal ('img3', thirdImg);
+    // setLocal ('img3', thirdImg);
+     setLocal('imageThree_n', imageThree.n);
 
 
 
@@ -237,6 +233,7 @@ function showRandomImg(image) {
   image.setAttribute("src", myArray[n].path);
   myArray[n].nShow++;
   console.log (n);
+  image.n = n;
   return myArray[n].path;
 }
 
@@ -305,3 +302,11 @@ function resetThePage () {
   location.reload();
   window.scrollTo(0, 0);
 }
+
+
+var localOne = getLocal ('imageOne_n');
+imageOne.setAttribute("src", myArray[localOne].path);
+var localTwo = getLocal ('imageTwo_n');
+imageTwo.setAttribute("src", myArray[localTwo].path);
+var localThree = getLocal ('imageThree_n');
+imageThree.setAttribute("src", myArray[localThree].path);
